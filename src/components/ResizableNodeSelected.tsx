@@ -17,10 +17,10 @@ const ResizableNodeSelected = ({ data, selected }) => {
       >
         {data.label}
       </div>
-      <Handle style={{ opacity: 0 }} type="source" position={Position.Top} id='a' />
-      <Handle style={{ opacity: 0 }} type="source" position={Position.Right} id='b' />
-      <Handle style={{ opacity: 0 }} type="source" position={Position.Bottom} id='c' />
-      <Handle style={{ opacity: 0 }} type="source" position={Position.Left} id='d' />
+      <Handle style={{ opacity: 0.8 }} type="source" position={Position.Top} id='a' />
+      <Handle style={{ opacity: 0.8 }} type="source" position={Position.Right} id='b' />
+      <Handle style={{ opacity: 0.8 }} type="source" position={Position.Bottom} id='c' />
+      <Handle style={{ opacity: 0.8 }} type="source" position={Position.Left} id='d' />
     </>
   );
 };

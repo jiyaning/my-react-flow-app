@@ -77,6 +77,18 @@ export default ({ info, onChange }: edgeProps) => {
     });
   };
 
+  // 是否动画
+  const setEdgeAnimated = (value: boolean) => {
+    setEdgeInfo({
+      ...edgeInfo,
+      isAnimated: value,
+    });
+    onChange({
+      ...edgeInfo,
+      isAnimated: value,
+    });
+  };
+
   return edgeInfo.id ? (
     <div className="updatenode__controls">
       <label>连接线名称：</label>
@@ -101,8 +113,12 @@ export default ({ info, onChange }: edgeProps) => {
         <label>是否隐藏：</label>
         <Switch checked={edgeInfo.isHidden} onChange={setEdgeHidden} />
       </div>
+      <div className="updatenode__checkboxwrapper">
+        <label>是否动画：</label>
+        <Switch checked={edgeInfo.animated} onChange={setEdgeAnimated} />
+      </div>
     </div>
   ) : (
-      <></>
-    );
+    <></>
+  );
 };
