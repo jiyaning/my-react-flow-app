@@ -4,7 +4,7 @@
  * @Author: ji.yaning
  * @Date: 2023-10-23 16:54:46
  * @LastEditors: ji.yaning
- * @LastEditTime: 2023-10-25 16:33:39
+ * @LastEditTime: 2023-11-16 16:13:09
  */
 import { useCallback, useState, useRef } from 'react';
 import ReactFlow,
@@ -41,7 +41,7 @@ const rfStyle = {
 const flowKey = 'flow_test';
 const localNodes = JSON.parse(localStorage.getItem(flowKey))?.nodes;
 const localEdges = JSON.parse(localStorage.getItem(flowKey))?.edges;
-let nodeId = 1;
+let nodeId = 100;
 
 function App () {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes1);
@@ -51,9 +51,55 @@ function App () {
   const [selection, setSelection] = useState({});
   const [menu, setMenu] = useState(null);
   const ref = useRef(null);
+  const connectingNodeId = useRef(null);
+
+  // screenToFlowPosition() 函数将屏幕像素位置转换为流位置，reactflow版本'11.10.0'以后支持
+  const { screenToFlowPosition } = useReactFlow();
+
   const onConnect = useCallback(
     (connection) => setEdges((eds) => addEdge(connection, eds)),
     [setEdges]
+  );
+
+  let id = 1000
+  const getId = () => `${id++}`;
+
+  const onConnectStart = useCallback((_, { nodeId }) => {
+    connectingNodeId.current = nodeId;
+  }, []);
+
+  const onConnectEnd = useCallback(
+    (event) => {
+      const targetIsPane = event.target.classList.contains('react-flow__pane');
+
+      if (targetIsPane) {
+        // we need to remove the wrapper bounds, in order to get the correct position
+        const id = getId();
+        const newNode = {
+          id,
+          type: 'ResizableNodeSelected',
+          position: screenToFlowPosition({
+            x: event.clientX,
+            y: event.clientY,
+          }),
+          data: { label: `Node ${id}` },
+          style: {
+            background: "#3dea84",
+            color: "white",
+            border: '1px solid orange',
+            borderRadius: '100%',
+            width: 90,
+            height: 60,
+          },
+        };
+
+        setNodes((nds) => nds.concat(newNode));
+        setEdges((eds) =>
+          eds.concat({ id, source: connectingNodeId.current, target: id }),
+        );
+      }
+    },
+    [screenToFlowPosition],
   );
 
   const onPaneClick = useCallback(() => setMenu(null), [setMenu]);
@@ -97,7 +143,7 @@ function App () {
 
   // 点击节点
   const onNodeClick = (e, node) => {
-    console.log("onNodeClick ~ e, node:", e, node)
+    // console.log("onNodeClick ~ e, node:", e, node)
     setNodeInfo({
       ...node.data,
       id: node.id,
@@ -112,7 +158,7 @@ function App () {
 
   // 选中改变
   const onSelectionChange = useCallback((selection) => {
-    console.log("onSelectionChange ~ selection:", selection)
+    // console.log("onSelectionChange ~ selection:", selection)
     setSelection(selection)
   }, [])
 
@@ -125,22 +171,21 @@ function App () {
       id,
       type: 'ResizableNodeSelected',
       position: {
-        x: 100,
-        y: 300,
-        // x: Math.random() * 200,
-        // y: Math.random() * 200,
+        // x: 100,
+        // y: 300,
+        x: Math.random() * 600,
+        y: Math.random() * 600,
       },
       data: {
         label: `Node ${id}`,
       },
       style: {
-        background: "#F3A011",
+        background: "#6a7d9a",
         color: "white",
         border: '1px solid orange',
         borderRadius: '100%',
         width: 80,
         height: 80,
-
       },
     };
     reactFlowInstance.addNodes(newNode);
@@ -162,7 +207,7 @@ function App () {
 
   // 改变连接线内容
   const changeEdge = (val) => {
-    console.log("changeEdge ~ val:", val)
+    // console.log("changeEdge ~ val:", val)
     setEdges((nds) =>
       nds.map((item) => {
         if (item.id === val.id) {
@@ -192,7 +237,7 @@ function App () {
 
   const onNodesDelete = useCallback(
     (deleted) => {
-      console.log("deleted:", deleted)
+      // console.log("deleted:", deleted)
       setEdges(
         deleted.reduce((acc, node) => {
           const incomers = getIncomers(node, nodes, edges);
@@ -214,7 +259,7 @@ function App () {
 
   const onNodeContextMenu = useCallback(
     (event, node) => {
-      console.log("onNodeContextMenu ~ event, node:", event, node)
+      // console.log("onNodeContextMenu ~ event, node:", event, node)
       // Prevent native context menu from showing
       event.preventDefault();
 
@@ -244,6 +289,8 @@ function App () {
         onNodeClick={onNodeClick} // 点击节点
         onEdgeClick={onEdgeClick} // 点击连接线
         onConnect={onConnect} // 节点直接连接
+        onConnectStart={onConnectStart}
+        onConnectEnd={onConnectEnd}
         nodeTypes={nodeTypes} // 节点类型
         // edgeTypes={edgeTypes}
         onNodeContextMenu={onNodeContextMenu}

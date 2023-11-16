@@ -15,7 +15,7 @@ export type nodeProps = {
 };
 
 export default ({ info, onChange }: nodeProps) => {
-  console.log("nodeContent.tsx:18 ~ info:", info)
+  // console.log("nodeContent.tsx:18 ~ info:", info)
   const [nodeInfo, setNodeInfo] = useState<any>({});
 
   useEffect(() => {

@@ -1,18 +1,18 @@
 /*
- * @Description:
+ * @Description: 鼠标右键菜单
  * @Version:
  * @Author: ji.yaning
  * @Date: 2023-10-25 14:11:37
  * @LastEditors: ji.yaning
- * @LastEditTime: 2023-10-25 15:14:58
+ * @LastEditTime: 2023-11-16 16:04:54
  */
 import React, { useCallback } from 'react';
 import { useReactFlow } from 'reactflow';
 
 export default function ContextMenu({ nodeInfo, top, left, right, bottom, ...props }) {
-  console.log("ContextMenu ~ nodeInfo:", nodeInfo)
+  // console.log("ContextMenu ~ nodeInfo:", nodeInfo)
   let { id } = nodeInfo
-  console.log("ContextMenu ~ id:", id)
+  // console.log("ContextMenu ~ id:", id)
   const { getNode, setNodes, addNodes, setEdges } = useReactFlow();
 
   const duplicateNode = useCallback(() => {
