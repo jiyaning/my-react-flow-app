@@ -1,8 +1,26 @@
-# React + Vite
+# React Flow Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[React Flow 官方文档](https://reactflow.dev/)
 
-Currently, two official plugins are available:
+## 开发构建
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 快速开始
+
+克隆项目：
+
+```bash
+
+```
+
+ 进入目录安装依赖：
+
+ ```bash
+npm i
+ ```
+
+ 开发：
+
+```bash
+npm run dev
+```
+

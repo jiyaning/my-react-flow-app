@@ -38,78 +38,12 @@ const rfStyle = {
   backgroundColor: '#B8CEFF',
 };
 
-const initialNodes = [
-  {
-    id: '1',
-    type: 'ResizableNodeSelected',
-    position: { x: 100, y: 100 },
-    data: { label: '1' },
-    style: {
-      background: "#F3A011",
-      color: "white",
-      border: '1px solid orange',
-      borderRadius: '100%',
-      width: 80,
-      height: 80,
-    },
-  },
-  {
-    id: '2',
-    type: 'ResizableNodeSelected',
-    position: { x: 200, y: 300 },
-    data: { label: '2' },
-    style: {
-      background: "#F3A011",
-      color: "white",
-      border: '1px solid orange',
-      borderRadius: '100%',
-      width: 80,
-      height: 80,
-    },
-  },
-  {
-    id: '3',
-    type: 'ResizableNodeSelected',
-    position: { x: 100, y: 500 },
-    data: { label: '3' },
-    style: {
-      background: "#F3A011",
-      color: "white",
-      border: '1px solid orange',
-      borderRadius: '100%',
-      width: 80,
-      height: 80,
-    },
-  },
-];
-const initialEdges = [
-  {
-    id: 'e1-2',
-    source: '1',
-    target: '2',
-    style: { stroke: "#116F97" },
-    label: "连接1-2",
-    sourceHandle: 'c',
-    targetHandle: 'a',
-  },
-  {
-    id: "e2-3",
-    source: "2",
-    target: "3",
-    // labelStyle: { fill: "#116F97", fontWeight: 100 }, // 连接线名称样式
-    style: { stroke: "#116F97" }, // 连接线颜色
-    label: "连接2-3",
-    sourceHandle: 'c',
-    targetHandle: 'a',
-  },
-];
-
 const flowKey = 'flow_test';
 const localNodes = JSON.parse(localStorage.getItem(flowKey))?.nodes;
 const localEdges = JSON.parse(localStorage.getItem(flowKey))?.edges;
 let nodeId = 1;
 
-function App1 () {
+function App () {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes1);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges1);
   const [nodeInfo, setNodeInfo] = useState({});
@@ -344,7 +278,7 @@ function App1 () {
 export default function () {
   return (
     <ReactFlowProvider>
-      <App1 />
+      <App />
     </ReactFlowProvider>
   );
 }

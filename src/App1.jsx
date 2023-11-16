@@ -1,10 +1,10 @@
 /*
- * @Description:
+ * @Description: 官方文档示例
  * @Version:
  * @Author: ji.yaning
  * @Date: 2023-10-23 16:54:46
  * @LastEditors: ji.yaning
- * @LastEditTime: 2023-10-24 17:46:33
+ * @LastEditTime: 2023-11-16 13:35:21
  */
 import React, { useCallback, useRef, useState } from 'react';
 import ReactFlow, {
@@ -26,7 +26,7 @@ const initialNodes = [
 ];
 const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
 
-export default function App () {
+export default function App1 () {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 

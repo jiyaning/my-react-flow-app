@@ -29,6 +29,73 @@ export const edges = [
   { "style": { "stroke": "#116F97" }, "type": "straight", "markerEnd": { "type": "arrowclosed", "color": "#116F97" }, "source": "12", "sourceHandle": "a", "target": "11", "targetHandle": "c", "id": "reactflow__edge-12a-11c", "selected": false, "label": "模型直接关系", "hidden": false },
   { "style": { "stroke": "#116F97" }, "type": "smoothstep", "markerEnd": { "type": "arrowclosed", "color": "#116F97" }, "source": "13", "sourceHandle": "b", "target": "11", "targetHandle": "d", "id": "reactflow__edge-13b-11d", "selected": false, "label": "模型直接关系", "hidden": false },
   { "style": { "stroke": "#116F97" }, "type": "smoothstep", "markerEnd": { "type": "arrowclosed", "color": "#116F97" }, "source": "9", "sourceHandle": "b", "target": "11", "targetHandle": "d", "id": "reactflow__edge-9b-11d", "selected": false, "label": "模型直接关系", "hidden": false }
-]
+];
 
 // "viewport": { "x": 654.5507940552135, "y": -54.945769269730704, "zoom": 1.6908994642667994 } }
+
+export const initialNodes = [
+  {
+    id: '1',
+    type: 'ResizableNodeSelected',
+    position: { x: 100, y: 100 },
+    data: { label: '1' },
+    style: {
+      background: "#F3A011",
+      color: "white",
+      border: '1px solid orange',
+      borderRadius: '100%',
+      width: 80,
+      height: 80,
+    },
+  },
+  {
+    id: '2',
+    type: 'ResizableNodeSelected',
+    position: { x: 200, y: 300 },
+    data: { label: '2' },
+    style: {
+      background: "#F3A011",
+      color: "white",
+      border: '1px solid orange',
+      borderRadius: '100%',
+      width: 80,
+      height: 80,
+    },
+  },
+  {
+    id: '3',
+    type: 'ResizableNodeSelected',
+    position: { x: 100, y: 500 },
+    data: { label: '3' },
+    style: {
+      background: "#F3A011",
+      color: "white",
+      border: '1px solid orange',
+      borderRadius: '100%',
+      width: 80,
+      height: 80,
+    },
+  },
+];
+
+export const initialEdges = [
+  {
+    id: 'e1-2',
+    source: '1',
+    target: '2',
+    style: { stroke: "#116F97" },
+    label: "连接1-2",
+    sourceHandle: 'c',
+    targetHandle: 'a',
+  },
+  {
+    id: "e2-3",
+    source: "2",
+    target: "3",
+    // labelStyle: { fill: "#116F97", fontWeight: 100 }, // 连接线名称样式
+    style: { stroke: "#116F97" }, // 连接线颜色
+    label: "连接2-3",
+    sourceHandle: 'c',
+    targetHandle: 'a',
+  },
+];
