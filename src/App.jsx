@@ -4,7 +4,7 @@
  * @Author: ji.yaning
  * @Date: 2023-10-23 16:54:46
  * @LastEditors: ji.yaning
- * @LastEditTime: 2023-11-16 16:13:09
+ * @LastEditTime: 2023-11-16 16:29:00
  */
 import { useCallback, useState, useRef } from 'react';
 import ReactFlow,
@@ -28,6 +28,7 @@ import UpdateNode from './components/nodeContent';
 import UpdateEdge from './components/edgeContent';
 import ResizableNodeSelected from './components/ResizableNodeSelected';
 import ContextMenu from './components/ContextMenu';
+import DownloadButton from './components/DownloadButton';
 import { nodes as initialNodes1, edges as initialEdges1 } from './components/data';
 
 const nodeTypes = {
@@ -317,6 +318,7 @@ function App () {
         </Panel>
         <MiniMap />
         <Controls />
+        <DownloadButton/>
       </ReactFlow>
     </div>
   );
