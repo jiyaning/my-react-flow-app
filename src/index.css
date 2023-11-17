@@ -196,7 +196,7 @@ button:focus-visible {
 }
 .updatenode__controls {
   position: absolute;
-  top: 10px;
+  top: 65px;
   right: 10px;
   z-index: 4;
   padding: 16px;

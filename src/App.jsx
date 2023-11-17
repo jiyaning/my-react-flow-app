@@ -4,7 +4,7 @@
  * @Author: ji.yaning
  * @Date: 2023-10-23 16:54:46
  * @LastEditors: ji.yaning
- * @LastEditTime: 2023-11-16 16:29:00
+ * @LastEditTime: 2023-11-17 09:31:52
  */
 import { useCallback, useState, useRef } from 'react';
 import ReactFlow,
@@ -199,6 +199,8 @@ function App () {
         if (item.id === val.id) {
           item.data = val;
           item.hidden = val.isHidden;
+          item.draggable = val.isDraggable;
+          item.selectable = val.isSelectable;
           item.style = { background: val.nodeBg, width: 80, height: 80, borderRadius: '100%', color: "white", fontSize: 2 };
         }
         return item;
@@ -278,6 +280,11 @@ function App () {
     [setMenu]
   );
 
+  const onPaneContextMenu = useCallback((event) => {
+    event.preventDefault();
+    setMenu(null)
+  }, [setMenu])
+
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
       <ReactFlow
@@ -301,6 +308,8 @@ function App () {
         onInit={setRfInstance} // 初始化保存的数据
         connectionMode={ConnectionMode.Loose}
         onSelectionChange={onSelectionChange}
+        onPaneContextMenu={onPaneContextMenu}
+        onPaneClick={onPaneClick}
       >
         {menu && <ContextMenu onClick={onPaneClick} {...menu} />}
         <Background variant="lines" gap={16} size={1} />
@@ -318,7 +327,7 @@ function App () {
         </Panel>
         <MiniMap />
         <Controls />
-        <DownloadButton/>
+        <DownloadButton />
       </ReactFlow>
     </div>
   );
