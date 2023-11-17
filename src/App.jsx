@@ -4,7 +4,7 @@
  * @Author: ji.yaning
  * @Date: 2023-10-23 16:54:46
  * @LastEditors: ji.yaning
- * @LastEditTime: 2023-11-17 09:31:52
+ * @LastEditTime: 2023-11-17 09:53:16
  */
 import { useCallback, useState, useRef } from 'react';
 import ReactFlow,
@@ -149,6 +149,8 @@ function App () {
       ...node.data,
       id: node.id,
       nodeBg: node.style && node.style.background ? node.style.background : '#ffffff',
+      fontColor: node.style && node.style.color ? node.style.color : '#ffffff',
+      fontSize: node.style && node.style.fontSize ? node.style.fontSize : 2,
     });
   };
 
@@ -201,7 +203,7 @@ function App () {
           item.hidden = val.isHidden;
           item.draggable = val.isDraggable;
           item.selectable = val.isSelectable;
-          item.style = { background: val.nodeBg, width: 80, height: 80, borderRadius: '100%', color: "white", fontSize: 2 };
+          item.style = { background: val.nodeBg, width: 80, height: 80, borderRadius: '100%', color: val.fontColor, fontSize: val.fontSize };
         }
         return item;
       }),
