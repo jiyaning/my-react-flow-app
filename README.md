@@ -1,3 +1,11 @@
+<!--
+ * @Description:
+ * @Version:
+ * @Author: ji.yaning
+ * @Date: 2023-10-23 16:54:46
+ * @LastEditors: ji.yaning
+ * @LastEditTime: 2024-02-06 14:30:28
+-->
 # React Flow Demo
 
 [React Flow 官方文档](https://reactflow.dev/)
@@ -28,8 +36,8 @@ npm run dev
 
 选中node节点：
 
-![](E:\react-code\my-react-flow-app\public\image\node-select.png)
+![](./public/image/node-select.png)
 
 选中edge线条：
 
-![](E:\react-code\my-react-flow-app\public\image\edge-select.png)
+![](./public/image/edge-select.png)
