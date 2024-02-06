@@ -24,3 +24,12 @@ npm i
 npm run dev
 ```
 
+## 效果展示
+
+选中node节点：
+
+![](E:\react-code\my-react-flow-app\public\image\node-select.png)
+
+选中edge线条：
+
+![](E:\react-code\my-react-flow-app\public\image\edge-select.png)
