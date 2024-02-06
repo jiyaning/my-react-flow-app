@@ -36,8 +36,8 @@ npm run dev
 
 选中node节点：
 
-![](https://github.com/jiyaning/staticImgs/blob/master/images/node-select.png)
+![](https://jiyaning.github.io/staticImgs/images/node-select.png)
 
 选中edge线条：
 
-![](https://github.com/jiyaning/staticImgs/blob/master/images/edge-select.png)
+![](https://jiyaning.github.io/staticImgs/images/edge-select.png)
